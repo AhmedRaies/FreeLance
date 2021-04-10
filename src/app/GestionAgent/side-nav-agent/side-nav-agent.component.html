@@ -1,0 +1,14 @@
+<mat-sidenav-container style="height: 85%;">
+    <mat-sidenav opened mode="side">
+      <mat-nav-list>
+        <a mat-list-item routerLink="affiche-agents">Liste des comptes agents</a>
+        <a mat-list-item routerLink="ajout-agents">Ajouter un compte agent</a>
+        <a mat-list-item routerLink="tash-agents">Corbeille comptes agents</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content >
+        
+      <router-outlet ></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
