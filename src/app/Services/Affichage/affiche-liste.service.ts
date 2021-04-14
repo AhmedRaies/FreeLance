@@ -11,7 +11,7 @@ export class AfficheListeService {
   constructor(private http: HttpClient) { }
 
   getAllAgent():Observable<Agent[]>{
-    return this.http.get<Agent[]>('http://localhost:3000/all-agent');
+    return this.http.get<Agent[]>('http://localhost:3000/super/all-agent');
   }
 
 }

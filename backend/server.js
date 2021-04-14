@@ -1,24 +1,18 @@
+var routerSuper =require('./routes/super.route')
+var routerAgent =require('./routes/agent.route')
+var routerClient =require('./routes/client.route')
+
+
 var express = require('express');
 var path = require('path');
 //var logger = require('morgan');
 //var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var router = express.Router();
+
 var cors = require('cors');
 
 var app = express();
-var mysql = require('mysql');
-
-
-
-
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: "",
-    database: 'Freelance_two'
-});
-
+var connection = require('./config');
 
 // view engine setup
 app.use(bodyParser.json())
@@ -30,9 +24,12 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+app.use('/super',routerSuper);
+app.use('/agent',routerAgent);
+app.use('/client',routerClient)
 
-let email;
-let pass;
+var email;
+var pass;
 app.post('/send-coord', (req, res) => {
     email = req.body.EMAIL;
     pass = req.body.PASS;
@@ -67,21 +64,6 @@ app.get('/agent', function (request, response) {
     //connection.connect();  
     //console.log(request.params.email);
     connection.query("SELECT distinct User.email,nom,prenom FROM User, Admin,agent where Admin.email=agent.email and agent.email=? and password=?;",[email,pass], function (err, rows, fields) {
-
-        console.log('Connection result error ' + err);
-        
-        console.log('Connection result error ' + err);
-                response.writeHead(200, { 'Content-Type': 'application/json' });
-                response.end(JSON.stringify(rows));
-                console.log(rows);
-    });
-});
-
-
-app.get('/all-agent', function (request, response) {
-    //connection.connect();  
-    //console.log(request.params.email);
-    connection.query("SELECT distinct User.email,nom,prenom FROM User, agent where User.email=agent.email ;", function (err, rows, fields) {
 
         console.log('Connection result error ' + err);
         
