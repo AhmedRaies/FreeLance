@@ -10,7 +10,7 @@ var connection = require('../config');
 routerSuper.get('/all-agent', function (request, response) {
     //connection.connect();  
     //console.log(request.params.email);
-    connection.query("SELECT distinct User.email,nom,prenom FROM User, agent where User.email=agent.email ;", function (err, rows, fields) {
+    connection.query("SELECT distinct User.email,nom,prenom,cin,banned FROM User, agent where User.email=agent.email ;", function (err, rows, fields) {
 
         console.log('Connection result error ' + err);
         

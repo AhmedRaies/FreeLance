@@ -15,7 +15,7 @@ export class AfficheAgentComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   agent:MatTableDataSource<any[]>;
 
-  displayedColumns: string[] = ['Nom', 'Prenom'];
+  displayedColumns: string[] = ['Nom', 'Prenom','Actions'];
   constructor(private agentshow : AfficheListeService) { }
 
   ngOnInit(): void {

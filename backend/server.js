@@ -45,7 +45,7 @@ app.post('/send-coord', (req, res) => {
 app.get('/super', function (request, response) {
     //connection.connect();  
     //console.log(request.params.email);
-    connection.query("SELECT distinct User.email,nom,prenom FROM User, Admin,super where Admin.email=super.email and super.email=? and password=?;",[email,pass], function (err, rows, fields) {
+    connection.query("SELECT distinct User.email,nom,prenom FROM User, Admin,super where banned=0 and Admin.email=super.email and super.email=? and password=?;",[email,pass], function (err, rows, fields) {
 
         console.log('Connection result error ' + err);
         
@@ -63,7 +63,7 @@ app.get('/super', function (request, response) {
 app.get('/agent', function (request, response) {
     //connection.connect();  
     //console.log(request.params.email);
-    connection.query("SELECT distinct User.email,nom,prenom FROM User, Admin,agent where Admin.email=agent.email and agent.email=? and password=?;",[email,pass], function (err, rows, fields) {
+    connection.query("SELECT distinct User.email,nom,prenom FROM User, Admin,agent where banned=0 and Admin.email=agent.email and agent.email=? and password=?;",[email,pass], function (err, rows, fields) {
 
         console.log('Connection result error ' + err);
         
