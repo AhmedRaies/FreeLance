@@ -20,14 +20,15 @@
         <mat-header-cell *matHeaderCellDef> Acitons </mat-header-cell>
         <mat-cell *matCellDef="let element">
           <form action="">
-            <input type="hidden" [value]=element.cin>
+            <input type="hidden" name="cin" #cin [(value)]=element.cin>
+
             <button mat-button [matMenuTriggerFor]="more_vert">
               <mat-icon>more_vert</mat-icon>
               <mat-menu #more_vert="matMenu">
                 <mat-nav-list>
-                  <a mat-list-item>Afficher Detaille</a>
-                  <a mat-list-item>Supprimer</a>
-                  <a mat-list-item>Modifier</a>
+                  <button class="button-list" mat-button type="submit" (click)="afficheDetaille(cin.value)">Afficher Detaille</button><br>
+                  <button class="button-list" mat-button type="submit" (click)="supprimer(cin.value)">Supprimer</button><br>
+                  <button class="button-list" mat-button type="submit" (click)="modifier(cin.value)">Modifier</button><br>
                 </mat-nav-list>
               </mat-menu>
               <span class="example-spacer"></span>

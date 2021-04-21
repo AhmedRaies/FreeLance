@@ -17,11 +17,14 @@ import { SideNavAgentComponent } from './GestionAgent/side-nav-agent/side-nav-ag
 import { AgentHeaderComponent } from './Headers/agent-header/agent-header.component';
 import { AgentComponent } from './Admin/agent/agent.component';
 import { LoginComponent } from './login/login.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './Services/Auth/auth.guard';
 import { AuthService } from './Services/Auth/auth.service';
 import { TashAgentComponent } from './GestionAgent/tash-agent/tash-agent.component';
+import { DetailAgentComponent } from './Details/detail-agent/detail-agent.component';
+import { ModifAgentComponent } from './Modifs/modif-agent/modif-agent.component';
+
 
 @NgModule({
   declarations: [
@@ -38,9 +41,12 @@ import { TashAgentComponent } from './GestionAgent/tash-agent/tash-agent.compone
     AgentHeaderComponent,
     AgentComponent,
     LoginComponent,
-    TashAgentComponent
+    TashAgentComponent,
+    DetailAgentComponent,
+    ModifAgentComponent
   ],
   imports: [
+    ReactiveFormsModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,

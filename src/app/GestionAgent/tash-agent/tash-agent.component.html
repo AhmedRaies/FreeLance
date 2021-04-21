@@ -1,1 +1,42 @@
-<p>tash-agent works!</p>
+<div id="container">
+    <mat-form-field>
+      <mat-label>Tapez le mot à rechercher</mat-label>
+      <input matInput (keyup)="applyFilter($event.target.value)" #input>
+    </mat-form-field>
+    <div class="mat-elevation-z8">
+      <mat-table [dataSource]="agent" matSort matSortDisableClear>
+  
+        <ng-container matColumnDef="Nom">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.nom}} </mat-cell>
+        </ng-container>
+  
+  
+        <ng-container matColumnDef="Prenom">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Prenom </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.prenom}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Actions">
+          <mat-header-cell *matHeaderCellDef> Acitons </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <form action="">
+              <input type="hidden" name="cin" #cin [(value)]=element.cin>
+  
+              <button mat-button [matMenuTriggerFor]="more_vert">
+                <mat-icon>more_vert</mat-icon>
+                <mat-menu #more_vert="matMenu">
+                  <mat-nav-list>
+                    <button class="button-list" mat-button type="submit" >Restaurer</button><br>
+                  </mat-nav-list>
+                </mat-menu>
+                <span class="example-spacer"></span>
+              </button>
+            </form>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
