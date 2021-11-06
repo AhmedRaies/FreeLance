@@ -1,17 +1,7 @@
 <mat-toolbar color="primary">
     <span>Interface Admin </span>
-    <button mat-button [matMenuTriggerFor]="menu">
-        <mat-icon>menu</mat-icon>
-        Gestion Comptes
-    </button>
-    <mat-menu #menu="matMenu">
-        <mat-nav-list>
-            <a mat-list-item routerLink="sidenav">Comptes Clients</a>
-            <!-- Modifer le routerlink  -->
-            <a mat-list-item routerLink="sidenav-agent" *ngIf="isSuper()">Comptes Agents</a>
-            <a mat-list-item routerLink="sidenav">Comptes Sous-Traitants</a>
-        </mat-nav-list>
-    </mat-menu>
+    <button mat-button routerLink="parks/affiche-park">Gestion des Parks</button>
+    
     <span class="example-spacer"></span>
   <button mat-icon-button (click)="logout()">
     <mat-icon>exit_to_app</mat-icon>

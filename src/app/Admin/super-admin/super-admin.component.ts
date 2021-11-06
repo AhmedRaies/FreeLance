@@ -15,6 +15,6 @@ export class SuperAdminComponent implements OnInit {
 
   isLoggedIn(){
     
-    return !isNull(localStorage.getItem('email'));
+    return (localStorage.getItem('username'))!=null;
   }
 }

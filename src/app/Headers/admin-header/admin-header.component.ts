@@ -14,7 +14,7 @@ export class AdminHeaderComponent implements OnInit {
   }
 
   isSuper():boolean{
-    if (localStorage.getItem('type')=="{\"TYPE\":\"super\"}") return true;
+    if (localStorage.getItem('username')!=null) return true;
     else {
       return false;
     }
